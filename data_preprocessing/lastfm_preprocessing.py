@@ -10,7 +10,7 @@ linking_relative_path = 'knowledge/linking.tsv'
 
 
 def run(data_folder):
-    print('\n***** alibaba data preparation *****\n'.upper())
+    print('\n***** last-fm data preparation *****\n'.upper())
     dataset_path = os.path.join(data_folder, dataset_relative_path)
     kg_path = os.path.join(data_folder, kg_relative_path)
     linking_path = os.path.join(data_folder, linking_relative_path)

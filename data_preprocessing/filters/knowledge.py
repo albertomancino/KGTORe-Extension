@@ -177,7 +177,7 @@ class ItemFeatures(Filter):
 
     def filter_engine(self):
         item_features = pd.DataFrame(zip(self._kg.s, zip(self._kg.p, self._kg.o)), columns=['i', 'f'])
-        item_entity_map = dict(zip(self._map.entity, self._map.item))
+        item_entity_map = dict(zip(self._map.e, self._map.i))
         # map entities with items
         item_features.i = item_features.i.map(item_entity_map)
         self._output['item_features'] = item_features
