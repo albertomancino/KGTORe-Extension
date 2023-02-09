@@ -50,8 +50,8 @@ def send_email(senders=None, receivers=None, messages=None, error=False, error_e
         senders_path = os.path.abspath(DATA_PATH)
 
         if isinstance(senders, str):
-            assert os.path.exists(senders), 'senders file path does not exist'
             senders_path = os.path.abspath(os.path.join(NOTIFIER_FOLDER, senders))
+            assert os.path.exists(senders_path), f'senders file path at \'{senders_path}\' does not exist'
 
         senders, _ = read_data(senders_path)
 
@@ -61,8 +61,8 @@ def send_email(senders=None, receivers=None, messages=None, error=False, error_e
         receivers_path = os.path.abspath(DATA_PATH)
 
         if isinstance(receivers, str):
-            assert os.path.exists(receivers), 'receivers file path does not exist'
             receivers_path = os.path.abspath(os.path.join(NOTIFIER_FOLDER, receivers))
+            assert os.path.exists(receivers_path), 'receivers file path at \'{receivers_path}\' does not exist'
 
         _, receivers = read_data(receivers_path)
 
@@ -72,8 +72,8 @@ def send_email(senders=None, receivers=None, messages=None, error=False, error_e
         messages_path = os.path.abspath(MESSAGE_PATH)
 
         if isinstance(messages, str):
-            assert os.path.exists(messages), 'messages file path does not exist'
             messages_path = os.path.abspath(os.path.join(NOTIFIER_FOLDER, messages))
+            assert os.path.exists(messages_path), f'messages file path at \'{messages_path}\' does not exist'
 
         messages = read_message(messages_path)
 

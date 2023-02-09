@@ -7,9 +7,6 @@ lastfm_data_folder = './data/last_fm'
 messages = 'preprocessing_message.txt'
 
 if __name__ == '__main__':
-    alibaba_preprocessing.run(data_folder=alibaba_data_folder)
-    lastfm_preprocessing.run(data_folder=lastfm_data_folder)
-
     try:
         alibaba_preprocessing.run(data_folder=alibaba_data_folder)
         lastfm_preprocessing.run(data_folder=lastfm_data_folder)
