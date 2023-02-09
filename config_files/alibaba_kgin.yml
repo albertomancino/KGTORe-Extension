@@ -7,7 +7,7 @@ experiment:
     test_path: ../data/{0}/test.tsv
     side_information:
       - dataloader: KGINTSVLoader
-        kg: ../data/{0}/kgin/kg.tsv
+        kg: ../data/{0}/kg.tsv
   dataset: alibaba
   top_k: 10
   evaluation:
