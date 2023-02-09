@@ -1,7 +1,7 @@
 import os.path
 
 from data_preprocessing.filters.dataset import Splitter, UserItemIterativeKCore
-from data_preprocessing.filters import load_kg, load_dataset, load_linking, store_dataset
+from data_preprocessing.filters import load_kg, load_dataset, load_linking, store_dataset, store_kg
 from data_preprocessing.filters.knowledge import LinkingCleaning, ItemFeatures, KGDatasetAlignment, DatasetKGAlignment
 
 dataset_relative_path = 'dataset.tsv'
@@ -45,6 +45,11 @@ def run(data_folder):
     kwargs.update(datakg_align.filter())
     del datakg_align
 
+    store_kg(**kwargs,
+                    folder=data_folder,
+                    name='kg',
+                    message='knowledge graph')
+
     kgflex_item_features = ItemFeatures(**kwargs)
     store_dataset(kgflex_item_features.filter()['item_features'],
                   folder=os.path.join(data_folder, 'kgflex'),
@@ -82,4 +87,3 @@ def run(data_folder):
                   folder=data_folder,
                   name='val',
                   message='validation set')
-

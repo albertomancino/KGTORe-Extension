@@ -37,6 +37,29 @@ def store_dataset(data, folder=None, name=None, message=None, **kwargs):
     return {name: dataset_path}
 
 
+def store_kg(kg, linking, folder=None, name=None, message=None, **kwargs):
+    if folder is None:
+        folder = '.'
+    if name is None:
+        name = 'kg'
+    if message is None:
+        message = 'dataset'
+
+    if os.path.exists(folder) is False:
+        os.makedirs(folder)
+
+    kg_path = os.path.abspath(os.path.join(folder, name)) + '.tsv'
+    kg.to_csv(kg_path, sep='\t', header=None, index=None)
+    print(f'{message.capitalize()} stored at \'{kg_path}\'')
+
+    linking_path = os.path.abspath(os.path.join(folder, 'linking')) + '.tsv'
+    linking.to_csv(linking_path, sep='\t', header=['item', 'entity'], index=None)
+    print(f'{message.capitalize()} item-entities linking stored at \'{linking_path}\'')
+
+    return {'kg_path': kg_path,
+            'linking_path': linking_path}
+
+
 def store_mapped_kg(kg, entities_mapping, predicates_mapping, linking, folder=None, name=None, message=None, **kwargs):
     if folder is None:
         folder = '.'
