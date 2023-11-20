@@ -44,6 +44,7 @@ class KGTORE(RecMixin, BaseRecommenderModel):
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
         row, col = data.sp_i_train.nonzero()
+        print("XGBoost")
 
         try:
             name = 'decision_path' + str(self._npr) + "_" + str(self._criterion) + ".tsv"
